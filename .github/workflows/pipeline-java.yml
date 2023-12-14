@@ -16,10 +16,7 @@ jobs:
    - name: Build
      run: |
        echo "Hola mundo..."
- test:
-   runs-on: ubuntu-latest
-   needs: build
-   steps:   
+       
    - name: SonarCluod Analysis
      run: |
        chmod +x gradlew
