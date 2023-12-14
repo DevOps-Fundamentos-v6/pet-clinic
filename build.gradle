@@ -2,6 +2,7 @@ plugins {
   id 'org.springframework.boot' version '2.6.6'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
+  id 'org.sonaqube' version '4.2.1.3168'
 }
 
 apply plugin: 'java'
@@ -34,6 +35,15 @@ dependencies {
   runtimeOnly 'org.postgresql:postgresql'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+sonar {
+  properties {
+    property 'sonar.projectKey', 'angelusIII_pet-clinic'
+    property 'sonar.organization', 'angelusiii'
+    property 'sonar.host.url', 'https://sonarcloud.io'
+    property 'sonar.projectName', 'pet-clinic'
+  }
 }
 
 test {
