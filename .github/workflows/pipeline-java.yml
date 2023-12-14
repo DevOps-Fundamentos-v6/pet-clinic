@@ -1,20 +1,23 @@
 name: CI
 
-on:
-  
-  push:
-  workflow_dispatch:
-
+on:  
+ push:
+ workflow_dispatch:
+ 
 jobs:
   
-  build:
-    
-    runs-on: ubuntu-latest
-
-    steps:
-    
-      - uses: actions/checkout@v3
-
-      - name: Run a multi-line script
-        run: |
-          echo "hola mundo"
+ build:
+   
+  runs-on: ubuntu-latest  
+  steps:
+   
+   - uses: actions/checkout@v3 
+   
+   - name: Build
+     run: |
+       echo "Hola mundo..."
+       
+   - name: SonarCluod Analysis
+     run: |
+       chmod +x gradlew
+       ./gradlew build sonar -Dsonar.token=${{ secrets.SONARCLUOD_TOKEN }}
