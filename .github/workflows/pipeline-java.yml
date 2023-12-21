@@ -26,4 +26,11 @@ jobs:
           chmod +x gradlew 
           #./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }} 
 
+      - name: Docker Build
+        run: | 
+          docker build --tag clagosu/pet-clinic:latest
+          docker images 
+
+    
+        
           
