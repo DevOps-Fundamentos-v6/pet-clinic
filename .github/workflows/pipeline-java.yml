@@ -48,6 +48,16 @@ jobs:
         run: |
           docker push clagosu/pet-clinic 
 
+  deploy: 
+    runs-on: self-hosted 
+    needs: build
+    steps: 
+
+    - name: Deploy to Minikube
+      run: |
+        kubectl apply -f deployment.yml
+      
+
       
 
     
