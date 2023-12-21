@@ -35,7 +35,7 @@ jobs:
       
       - name: Docker Build
         run: | 
-          docker build --tag clagosu/pet-clinic:latest
+          docker build --tag clagosu/pet-clinic:latest .
           docker images
 
       - name: Docker Push
