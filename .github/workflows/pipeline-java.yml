@@ -24,7 +24,15 @@ jobs:
       - name: SonarCloud Analysis
         run: |
           chmod +x gradlew 
-          #./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }} 
+          ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }} 
+
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+        with:
+          scanMetadataReportFile: build/sonar/report-task.txt   
 
 
       - name: Docker Login
